@@ -1,0 +1,67 @@
+Major Project - Baby Name Generator
+
+import tkinter as tk
+from tkinter import *
+from PIL import Image,ImageTk
+
+window_main=tk.Tk(className="Baby Name Generator")
+window_main.geometry('600x600')
+
+namelist=["Arun","Arjun","Abinaya","Bachi","Bharath","Bhavana","Cathrin","Charles","Christy","David","Dharshini","Daniel",
+          "Easton","Elizabeth","Elias","Frederick","Francis","Fernado","George","Gabriela","Grayson","Henry","Harish","Hardik",
+          "Isabella","Iris","Ivory","Jack","Jordan","Jame","Kevin","Karthick","Karl","Lara","Luvis","Levi","Max","Mthew",
+          "Mythili","Nithin","Nikhil","Nicholas","Omar","Oliver","Oakley","pavithra","Priya","Praveen","Qasim","Quade",
+          "Quin","Richard","Rio","Raghul","Siddharth","Santhosh","Stella","Tharun","Thomas","Tyler","Umar","Uriel","Ulysses"
+          "Vicky","Varun","Vedika","William","Weston","Wordsworth","Xara","Xaiden","Xander","Yuvan","Yakshika","Yuvan",
+          "Zane","Zayden","Zion"]
+
+#Image background
+img=ImageTk.PhotoImage(Image.open("C:\\Users\\win10\\Desktop\\dharshini\\baby.jpg"))
+l=Label(image=img)
+l.pack()
+
+#Heading label
+app_label=tk.Label(window_main,text="BABY NAME GENERATOR",font=("times",20,"bold"),foreground="blue")
+app_label.place(x=130,y=20)
+
+#User input label
+name_label=tk.Label(window_main,text="Please Enter the Letter",font=("Arial",12))
+name_label.place(x=50,y=140)
+
+#entry
+a_var=tk.StringVar()
+alphabet_entry=tk.Entry(window_main,font=("times",20,"bold"),textvariable=a_var).place(x=250,y=140)
+
+#functions
+def displaynamesfunc():
+    for i in namelist:
+        if i[0][0].lower()==a_var.get().lower():
+            textarea.insert(END,(i+" "))
+            
+#button            
+display_button=tk.Button(window_main,font=("callibria",15,"bold"),foreground="blue",text="Generate Names",command=displaynamesfunc)
+display_button.place(x=200,y=220)
+
+#textarea
+textarea_var=tk.StringVar()
+textarea=tk.Text(window_main,font=("Arial",15))
+textarea.place(x=30,y=340,width=540,height=140)
+
+#functions
+def clearfunc():
+    a_var.set("")
+    textarea.delete("1.0","end")
+    
+def exitfunc():
+    window_main.destroy()
+    
+#button
+clear_button=tk.Button(window_main,font=("Callibria",20,"bold"),foreground="red",background="Yellow",text="clear",command=clearfunc)
+clear_button.place(x=200,y=540)
+
+
+exit_button=tk.Button(window_main,font=("Callibria",20,"bold"),foreground="red",background="Yellow",text="Exit",command=exitfunc)
+exit_button.place(x=470,y=540)
+
+window_main.mainloop()
+     

@@ -1,0 +1,28 @@
+Mini Project - 1 Digital wall Clock
+
+import tkinter as tk
+from tkinter import *
+from time import strftime
+from PIL import Image, ImageTk
+
+window_main=tk.Tk()
+window_main.title("Clock Widget By Pavi")
+window_main.geometry('640x480')
+
+#Image
+img=ImageTk.PhotoImage(Image.open("C:\\Users\\win10\\Desktop\\dharshini\\clock.jpeg"))
+l=Label(image=img)
+l.pack()
+
+def time():
+    string=strftime("%H:%M:%S %p")
+    label.config(text=string)
+    label.after(1000,time)
+    
+label=Label(window_main,font=("times",14,"bold"),background="black",height=2,borderwidth=1,relief="solid",
+            foreground="white")
+label.place(x=270,y=110)
+time()
+
+window_main.mainloop()
+
